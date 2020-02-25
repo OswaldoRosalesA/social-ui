@@ -1,8 +1,8 @@
-const multiplicationHost = "http://localhost:8000";
+const SERVER_URL = "http://localhost:8000/api";
 
 function updateMultiplication() {
     $.ajax({
-        url: multiplicationHost + "/multiplications/random"
+        url: SERVER_URL + "/multiplications/random"
     }).then(function (data) {
         // Cleans the form
         $("#attempt-form").find("input[name='result-attempt']").val("");
@@ -17,7 +17,7 @@ function updateResults(alias) {
     let userId = -1;
     $.ajax({
         async: false,
-        url: multiplicationHost + "/results?alias=" + alias,
+        url: SERVER_URL + "/results?alias=" + alias,
         success: function (data) {
             $('#results-div').show();
             $('#results-body').empty();
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
         // Send the data using post
         $.ajax({
-            url: multiplicationHost + '/results',
+            url: SERVER_URL + '/results',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",

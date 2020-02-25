@@ -1,8 +1,6 @@
-const gamificationHost = "http://localhost:8001";
-
 function updateLeaderBoard() {
     $.ajax({
-        url: gamificationHost + "/leaders"
+        url: SERVER_URL + "/leaders"
     }).then(function(data) {
         $('#leaderboard-body').empty();
         data.forEach(function(row) {
@@ -14,7 +12,7 @@ function updateLeaderBoard() {
 
 function updateStats(userId) {
     $.ajax({
-        url: gamificationHost + "/stats?userId=" + userId,
+        url: SERVER_URL + "/stats?userId=" + userId,
         success: function(data) {
             $('#stats-div').show();
             $('#stats-user-id').empty().append(userId);
